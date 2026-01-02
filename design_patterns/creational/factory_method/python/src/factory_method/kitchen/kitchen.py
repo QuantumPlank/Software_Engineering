@@ -6,6 +6,9 @@ class Meal(ABC):
     def serve(self) -> str:
         pass
 
+    def dummy(self) -> None:
+        pass
+
 
 class Pizza(Meal):
     def serve(self) -> str:
@@ -18,18 +21,10 @@ class Hamburger(Meal):
 
 
 class Kitchen:
-    def create_meal(self, meal_type):
+    def create_meal(self, meal_type) -> Meal:
         if meal_type == "pizza":
             return Pizza()
         elif meal_type == "hamburger":
             return Hamburger()
         else:
             raise ValueError("Unknown meal type")
-
-
-if __name__ == "__main__":
-    k = Kitchen()
-    meal1 = k.create_meal("pizza")
-    print(meal1.serve())
-    meal2 = k.create_meal("hamburger")
-    print(meal2.serve())
